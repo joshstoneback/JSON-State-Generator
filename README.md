@@ -1,1 +1,1 @@
-## Generates starting positions for klondike solitiare with restrictions placed upon the initial visible cards
+## Generates starting positions for Klondike solitiare with restrictions placed upon the initial visible cards

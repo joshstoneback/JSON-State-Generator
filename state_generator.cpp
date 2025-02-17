@@ -263,7 +263,8 @@ int main(){
     // random_to_folder("random1000", 1000);
     // n_of_one_rank_to_folder(4, "all_aces", "A", 1000);
     // no_duplicates_to_folder("no_duplicates", 1000);
-    n_of_one_rank_to_folder(4, "all_7s", "7", 1000);
+    //n_of_one_rank_to_folder(4, "all_7s", "7", 1000);
+    n_of_one_rank_to_folder(4, "all_js", "J", 1000);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     std::cout << "Time taken: " << duration.count() << " milliseconds" << std::endl;

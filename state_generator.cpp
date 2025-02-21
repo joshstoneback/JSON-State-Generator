@@ -199,6 +199,100 @@ void n_of_one_rank_to_folder(int n, std::string foldername, std::string rank, in
     }
 }
 
+void n_m_of_two_ranks_to_folder(std::string foldername, int n, int m, std::string rank1, std::string rank2, int num_states){
+    if (n + m > 7) {
+        std::cerr << "Error: n + m must be less than or equal to 7." << std::endl;
+        return;
+    }
+
+    if (!std::filesystem::exists(foldername)) {
+        std::filesystem::create_directory(foldername);
+    }
+
+    for(int i = 0; i < num_states; i++){
+        std::vector<std::string> deck = shuffle_deck();
+        std::vector<std::string> cards;
+        int ncount = 0;
+        int mcount = 0;
+        for (int j = 0; j < 52; ++j) {
+            if (cards.size() == n + m) { // Happens before the deck is searched to account for the case where n = 0
+                break;
+            }
+            std::string card = deck[j];
+            if ((std::tolower(card[1]) == char(std::tolower(rank1[0])) || (card[2] == 0 && rank1 == "10")) && ncount < n) {
+                cards.push_back(card);
+                ncount++;
+            } else if ((std::tolower(card[1]) == char(std::tolower(rank2[0])) || (card[2] == 0 && rank2 == "10")) && mcount < m) {
+                cards.push_back(card);
+                mcount++;
+            }
+            
+        }
+        for (int j = 0; j < 7 - n - m; ++j) {
+            if (std::tolower(deck.back()[1]) == char(std::tolower(rank1[0])) || (deck.back()[2] == 0 && rank1 == "10")) {
+                deck.pop_back();
+                j--;
+                continue;
+            } else if (std::tolower(deck.back()[1]) == char(std::tolower(rank2[0])) || (deck.back()[2] == 0 && rank2 == "10")) {
+                deck.pop_back();
+                j--;
+                continue;
+            } else{
+                cards.push_back(deck.back());
+                deck.pop_back();
+            }
+            
+        }
+        cards = shuffle_cards(cards);
+
+        std::string game_state = state_from_set_tableau(cards);
+        std::string filename = foldername + "/game" + std::to_string(i + 1) + ".json";
+
+        std::ofstream file;
+        if (!file) {
+            std::cerr << "Unable to open file: " << filename << std::endl;
+            continue;
+        }
+        file.open(filename);
+        file << game_state << std::endl;
+        file.close();
+    }
+}
+
+void all_one_color_to_folder(std::string foldername, std::string color, int num_states){
+    if (!std::filesystem::exists(foldername)) {
+        std::filesystem::create_directory(foldername);
+    }
+    for(int i = 0; i < num_states; i++){
+        std::vector<std::string> deck = shuffle_deck();
+        std::vector<std::string> cards;
+        for (int j = 0; j < 52; ++j) {
+            std::string card = deck[j];
+            if ((card[1] == 'h' || card[1] == 'd') && color == "red") {
+                cards.push_back(card);
+            } else if ((card[1] == 's' || card[1] == 'c') && color == "black") {
+                cards.push_back(card);
+            }
+            if (cards.size() == 7) { 
+                break;
+            }
+        }
+        cards = shuffle_cards(cards);
+
+        std::string game_state = state_from_set_tableau(cards);
+        std::string filename = foldername + "/game" + std::to_string(i + 1) + ".json";
+
+        std::ofstream file;
+        if (!file) {
+            std::cerr << "Unable to open file: " << filename << std::endl;
+            continue;
+        }
+        file.open(filename);
+        file << game_state << std::endl;
+        file.close();
+    }
+}
+
 // generate random states into a folder
 void random_to_folder(std::string foldername, int num_states){
     if (!std::filesystem::exists(foldername)) {
@@ -263,8 +357,8 @@ int main(){
     // random_to_folder("random1000", 1000);
     // n_of_one_rank_to_folder(4, "all_aces", "A", 1000);
     // no_duplicates_to_folder("no_duplicates", 1000);
-    //n_of_one_rank_to_folder(4, "all_7s", "7", 1000);
-    n_of_one_rank_to_folder(4, "all_js", "J", 1000);
+    // n_of_one_rank_to_folder(4, "all_9s", "9", 1000);
+    n_m_of_two_ranks_to_folder("four_a_three_2", 4, 3, "A", "2", 1000);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     std::cout << "Time taken: " << duration.count() << " milliseconds" << std::endl;

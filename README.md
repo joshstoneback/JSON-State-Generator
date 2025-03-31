@@ -7,6 +7,7 @@ This C++ program generates JSON-formatted initial states of Klondike Solitaire g
 ## 🧩 JSON Output Format
 
 Each generated JSON file defines a valid initial solitaire state. 
+
 **Example:**
 ```json
 {

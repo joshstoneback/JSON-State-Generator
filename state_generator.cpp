@@ -361,7 +361,6 @@ int main(){
     // n_of_one_rank_to_folder(4, "all_9s", "9", 1000);
     //n_m_of_two_ranks_to_folder("four_q_three_10", 4, 3, "Q", "10", 1000);
     //all_one_color_to_folder("all_red", "red", 1000);
-    all_buildable_to_folder("all_buildable_test", 1);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     std::cout << "Time taken: " << duration.count() << " milliseconds" << std::endl;

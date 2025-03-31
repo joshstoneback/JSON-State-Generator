@@ -1,6 +1,6 @@
 # Klondike Solitaire JSON State Generator
 
-This C++ program generates JSON-formatted initial states of Klondike Solitaire games, tailored for use with a  **[modified version of Solvitaire](https://github.com/joshstoneback/Modified-Solvitaire)**, a solitaire solver. The original can be found **[here](https://github.com/thecharlieblake/Solvitaire)**. It allows users to create random or condition-specific game setups to test solver performance or run statistical analyses.
+This C++ program generates JSON-formatted initial states of Klondike Solitaire games, tailored for use with a  **[modified version of Solvitaire](https://github.com/joshstoneback/Modified-Solvitaire)**, a solitaire solver. The original version of Solvitaire can be found **[here](https://github.com/thecharlieblake/Solvitaire)**. This state generator allows users to create random or condition-specific game setups to test solver performance or run statistical analyses.
 
 ---
 

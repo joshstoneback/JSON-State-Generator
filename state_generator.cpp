@@ -17,7 +17,7 @@
     }
 
     This program generates a user-input number of possible states of a solitaire game given conditions placed on 
-    the initially visible cards, signified by lowercase letters.
+    the initially visible cards, signified by uppercase letters.
 
 */
 
@@ -352,13 +352,16 @@ void no_duplicates_to_folder(std::string foldername, int num_states){
     }
 }
 
+
 int main(){
     auto start = std::chrono::high_resolution_clock::now();
     // random_to_folder("random1000", 1000);
     // n_of_one_rank_to_folder(4, "all_aces", "A", 1000);
     // no_duplicates_to_folder("no_duplicates", 1000);
     // n_of_one_rank_to_folder(4, "all_9s", "9", 1000);
-    n_m_of_two_ranks_to_folder("four_a_three_2", 4, 3, "A", "2", 1000);
+    //n_m_of_two_ranks_to_folder("four_q_three_10", 4, 3, "Q", "10", 1000);
+    //all_one_color_to_folder("all_red", "red", 1000);
+    all_buildable_to_folder("all_buildable_test", 1);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     std::cout << "Time taken: " << duration.count() << " milliseconds" << std::endl;

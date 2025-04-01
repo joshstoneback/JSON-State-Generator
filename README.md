@@ -12,25 +12,21 @@ Each generated JSON file defines a valid initial solitaire state.
 ```json
 {
   "tableau piles": [
-    ["KH"],
-    ["10d", "7S"],
-    ["8h", "7c", "6H"],
-    ["6c", "4s", "3d", "2S"],
-    ["8d", "qd", "10c", "8c", "9D"],
-    ["as", "kd", "qc", "jc", "10s", "9H"],
-    ["ks", "qh", "js", "10h", "9c", "8s", "7H"]
+    ["AC"],
+    ["6d", "6H"],
+    ["jd", "qs", "6S"],
+    ["3d", "2s", "ks", "10D"],
+    ["9c", "kd", "9h", "qd", "5S"],
+    ["9s", "4h", "7c", "qc", "5c", "7H"],
+    ["10c", "10s", "8d", "5d", "9d", "4c", "AS"]
   ],
-  "stock": ["6s", "kc", "jh", "5d", "3s", "9s", "4c", "ad", "7d", "5H", "2H", "4D", "3H", "2C", "ah", "ac"],
-  "waste": [],
-  "foundations": [[], [], [], []]
+  "stock": ["2h", "5h", "8c", "3s", "js", "7d", "jh", "7s", "kh", "2c", "10h", "jc", "8h", "6c", "2d", "kc", "ad", "3h", "ah", "4s", "qh", "3c", "4d", "8s"]
 }
 ```
 
 - Uppercase card codes (e.g. "KH") indicate face-up cards in the tableau.
 
 - Lowercase card codes (e.g. "10d") are face-down cards.
-
-- The waste and foundations are empty at the start.
 
 ## ⚙️ Features
 This tool can generate game states with specific constraints, such as:

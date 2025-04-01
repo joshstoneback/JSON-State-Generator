@@ -11,9 +11,7 @@
         ["as", "kd", "qc", "jc", "10s", "9H"],
         ["ks", "qh", "js", "10h", "9c", "8s", "7H"]
     ],
-    "stock": ["6s", "kc", "jh", "5d", "3s", "9s", "4c", "ad", "7d", "5H", "2H", "4D", "3H", "2C", "ah", "ac"],
-    "waste": [],
-    "foundations": [[], [], [], []]
+    "stock": ["6s", "kc", "jh", "5d", "3s", "9s", "4c", "ad", "7d", "5H", "2H", "4D", "3H", "2C", "ah", "ac"]
     }
 
     This program generates a user-input number of possible states of a solitaire game given conditions placed on 
@@ -359,8 +357,8 @@ int main(){
     // n_of_one_rank_to_folder(4, "all_aces", "A", 1000);
     // no_duplicates_to_folder("no_duplicates", 1000);
     // n_of_one_rank_to_folder(4, "all_9s", "9", 1000);
-    //n_m_of_two_ranks_to_folder("four_q_three_10", 4, 3, "Q", "10", 1000);
-    //all_one_color_to_folder("all_red", "red", 1000);
+    // n_m_of_two_ranks_to_folder("four_q_three_10", 4, 3, "Q", "10", 1000);
+    // all_one_color_to_folder("all_red", "red", 1000);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     std::cout << "Time taken: " << duration.count() << " milliseconds" << std::endl;
